@@ -25,7 +25,7 @@ const Footer = () => {
             </li>
             <li>
   <a
-    href="https://admission-portal-one.vercel.app/"
+    href="https://admission.inframeschool.com/"
     className="hover:text-blue-500 transition duration-300"
     target="_blank" 
     rel="noopener noreferrer"
