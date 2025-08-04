@@ -12,17 +12,17 @@ import { apiHelpers, BlogPost, BlogSection as APIBlogSection } from "@/utils/api
 // Category colors mapping
 const categoryColors: Record<string, string> = {
   Education: "bg-yellow-400 text-black",
-  Career: "bg-yellow-300 text-white",
-  Facilities: "bg-green-500 text-white",
-  Alumni: "bg-purple-500 text-white",
-  Curriculum: "bg-red-500 text-white",
-  Placements: "bg-indigo-500 text-white",
-  Faculty: "bg-pink-500 text-white",
-  "Student Life": "bg-orange-500 text-white",
-  "Video Editing": "bg-cyan-500 text-white",
-  "BBA Course in Advertising and Marketing": "bg-emerald-500 text-white",
-  ws2: "bg-gray-500 text-white",
-  "Fashion Design": "bg-pink-400 text-white",
+  Career: "bg-yellow-400 text-white",
+  Facilities: "bg-yellow-400 text-white",
+  Alumni: "bg-yellow-400 text-white",
+  Curriculum: "bg-yellow-400 text-white",
+  Placements: "bg-yellow-500 text-white",
+  Faculty: "bg-yellow-500 text-white",
+  "Student Life": "bg-yellow-400 text-white",
+  "Video Editing": "bg-yellow-400 text-white",
+  "BBA Course in Advertising and Marketing": "bg-yellow-400 text-white",
+  ws2: "bg-yellow-400 text-white",
+  "Fashion Design": "bg-yellow-400 text-white",
 };
 
 interface DynamicBlogDetailProps {

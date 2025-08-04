@@ -95,6 +95,16 @@ const tabOrder = ["all", "art", "design", "business"];
 const CourseCatalog = () => {
   const { courses, loading, error } = useCourses();
 
+  // Sort courses by number of programs (high to low) - must be before any conditional returns
+  const sortedCourses = React.useMemo(() => {
+    if (!courses || courses.length === 0) return [];
+    return [...courses].sort((a, b) => {
+      const programsA = a.programs?.length || 0;
+      const programsB = b.programs?.length || 0;
+      return programsB - programsA; // Sort from high to low
+    });
+  }, [courses]);
+
   if (loading) {
     return <div className="text-center py-20 text-xl">Loading courses...</div>;
   }
@@ -106,10 +116,21 @@ const CourseCatalog = () => {
   }
 
   const filterByCategory = (category: string) => {
-    if (category === "all") return courses;
-    // TODO: Map with backend category field when available
-    // For now, return all courses as placeholder
-    return courses;
+    if (category === "all") return sortedCourses;
+    
+    // Use the same category logic as StudyDropDown
+    return sortedCourses.filter((course: Course) => {
+      let courseCategory = "Design"; // Default category
+      
+      // Determine category based on course title (same logic as StudyDropDown)
+      if (["Fine Arts", "Animation and VFX"].some(art => course.title.includes(art))) {
+        courseCategory = "Art";
+      } else if (["Digital Marketing", "Entrepreneurship", "Advertising"].some(business => course.title.includes(business))) {
+        courseCategory = "Business";
+      }
+      
+      return courseCategory.toLowerCase() === category.toLowerCase();
+    });
   };
 
   return (
@@ -138,7 +159,7 @@ const CourseCatalog = () => {
             </TabsList>
           </div>
           <TabsContent value="all">
-            <CourseSection courses={courses} />
+            <CourseSection courses={sortedCourses} />
           </TabsContent>
           <TabsContent value="art">
             <CourseSection courses={filterByCategory("art")} />
